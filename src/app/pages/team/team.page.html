@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">SQUAD 2017/2018</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-grid padding>
+      <ion-row *ngFor="let player of players">
+        <ion-col size="2">
+          <ion-text>X</ion-text>
+        </ion-col>
+        <ion-col size="10">
+          <ion-row>
+            <ion-col>
+              {{player.firstName}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              {{player.lastName}}
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>

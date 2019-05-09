@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="playerForm">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">First Name</ion-label>
+          <ion-input formControlName="firstName" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Last Name</ion-label>
+          <ion-input formControlName="lastName" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Number</ion-label>
+          <ion-input formControlName="number" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Position</ion-label>
+          <ion-input formControlName="position" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Nationality</ion-label>
+          <ion-input formControlName="nationality" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Age</ion-label>
+          <ion-input formControlName="age" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Appearances</ion-label>
+          <ion-input formControlName="appearances" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Appearances as Substitute</ion-label>
+          <ion-input formControlName="appearancesAsSubstitute" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Goals/Clean Sheets</ion-label>
+          <ion-input formControlName="goalsAndCleanSheets" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Yellow Cards</ion-label>
+          <ion-input formControlName="yellowCards" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="stacked">Red Cards</ion-label>
+          <ion-input formControlName="redCards" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="savePlayer()">
+    Add
+  </ion-button>
+</ion-footer>
