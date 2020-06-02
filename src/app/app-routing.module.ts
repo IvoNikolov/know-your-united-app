@@ -7,6 +7,12 @@ const routes: Routes = [
   { path: 'team', loadChildren: './pages/team/team.module#TeamPageModule' },
   { path: 'player-details', loadChildren: './pages/player-details/player-details.module#PlayerDetailsPageModule' },
   { path: 'timer', loadChildren: './pages/timer/timer.module#TimerPageModule' },
+  { path: 'add-player', children:
+    [
+      { path: '', loadChildren: './pages/player-details/add-player/add-player.module#AddPlayerPageModule' },
+      { path: ':id', loadChildren: './pages/player-details/add-player/add-player.module#AddPlayerPageModule' },
+    ]
+  }
 ];
 
 @NgModule({

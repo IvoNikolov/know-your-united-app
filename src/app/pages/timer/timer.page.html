@@ -1,7 +1,11 @@
 <ion-header>
-  <ion-toolbar class="toolbar">
+  <ion-toolbar class="toolbar ion-text-center">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Guess the Number</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="alertInfo()"><ion-icon name="information" color="primary" style="font-size: 3rem;"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -13,11 +17,40 @@
   <ion-datetime displayFormat="mm:ss" placeholder="Tap" [(ngModel)]="fullTime"></ion-datetime>
 </ion-item>
 
-<circle-progress (click)="startTimer()"
+<ion-row>
+  <ion-col size="6" offset="3" >
+    <ion-button expand="full" *ngIf="percent === 0" (click)="startTimer()" color="success">START GAME</ion-button>
+  </ion-col>
+</ion-row>
+
+<ion-row *ngIf="percent !== 0" class="ion-text-center">
+  <ion-col>
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-no-padding">
+      {{ player.position}}
+    </ion-col>
+  </ion-row >
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-no-padding">
+      {{player.firstName}} {{player.lastName}}
+    </ion-col>
+  </ion-row>
+  </ion-col>
+  <ion-col>
+    <ion-input [(ngModel)]="inputValue" style="background-color: blue; color:white" type="number" min=0 ></ion-input>
+  </ion-col>
+  <ion-col>
+    <ion-button  [disabled]="!inputValue" shape="round" fill="outline" (click)="checkPlayer()">
+      <ion-icon name="thumbs-up" color="success" style="font-size: 2rem;" ></ion-icon>
+    </ion-button>
+  </ion-col> 
+</ion-row>
+
+<circle-progress
   [percent]="percent"
   [maxPercent] = "100"
   [radius]="radius"
-  [title] = "Title"
+  [title] = "title"
   [showTitle]="true"
   [showSubtitle]="false"
   [outerStrokeWidth]="16"

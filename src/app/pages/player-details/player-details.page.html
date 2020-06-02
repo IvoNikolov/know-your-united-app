@@ -1,117 +1,57 @@
 <ion-header>
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button [routerLink]="['/']" routerDirection="back"><ion-icon name="menu" ></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Team</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="navTo()"><ion-icon name="add" ></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="playerForm">
+  <ion-spinner *ngIf="isLoading"></ion-spinner>
+  <ion-grid *ngIf="!isLoading">
     <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">First Name</ion-label>
-          <ion-input formControlName="firstName" type="text">
-          </ion-input>
-        </ion-item>
+      <ion-col size="2">
+        #
+      </ion-col>
+      <ion-col size="2">
+        Pos.
+      </ion-col>
+      <ion-col size="4">
+        Name
+      </ion-col>
+      <ion-col size="4">
+        Update/ Remove
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Last Name</ion-label>
-          <ion-input formControlName="lastName" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Number</ion-label>
-          <ion-input formControlName="number" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Position</ion-label>
-          <ion-input formControlName="position" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Nationality</ion-label>
-          <ion-input formControlName="nationality" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Age</ion-label>
-          <ion-input formControlName="age" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Appearances</ion-label>
-          <ion-input formControlName="appearances" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Appearances as Substitute</ion-label>
-          <ion-input formControlName="appearancesAsSubstitute" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Goals/Clean Sheets</ion-label>
-          <ion-input formControlName="goalsAndCleanSheets" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Yellow Cards</ion-label>
-          <ion-input formControlName="yellowCards" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label position="stacked">Red Cards</ion-label>
-          <ion-input formControlName="redCards" type="text">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </form>
+    <div *ngFor="let player of players">
+      <ion-row >
+        <ion-col size="2">
+          {{ player.number}}
+        </ion-col>
+        <ion-col size="2">
+          {{ player.position}}
+        </ion-col>
+        <ion-col size="4">
+          {{player.lastName}},
+          {{player.firstName}}
+        </ion-col>
+        <ion-col size="2" class="ion-align-items-center">
+            <ion-icon (click)="updatePlayer(player.id)" name="person" color="primary" style="font-size: 2rem;"></ion-icon>
+        </ion-col>
+        <ion-col size="2" >
+            <ion-icon name="trash" (click)="removePlayer(player.id)" color="danger" style="font-size: 2rem;"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
 </ion-content>
 
-<ion-footer>
+<!-- <ion-footer>
   <ion-button (click)="savePlayer()">
     Add
   </ion-button>
-</ion-footer>
+</ion-footer> -->

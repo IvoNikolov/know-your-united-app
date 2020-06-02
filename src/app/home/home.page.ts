@@ -10,17 +10,13 @@ export class HomePage {
   constructor(public router: Router) {
   }
 
-  click() {
+  navToDetails() {
     console.log('Hello');
     this.router.navigateByUrl('player-details');
   }
 
-  clickTimer() {
+  navToTimer() {
     this.router.navigateByUrl('timer');
-  }
-
-  clickTeam() {
-    this.router.navigateByUrl('team');
   }
 
 }

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="player-details"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Player</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+  <ion-content padding>
+    <ion-spinner *ngIf="isLoading" color="danger"></ion-spinner>
+    <form [formGroup]="playerForm" *ngIf="!isLoading">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">First Name</ion-label>
+            <ion-input formControlName="firstName" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Last Name</ion-label>
+            <ion-input formControlName="lastName" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Number</ion-label>
+            <ion-input formControlName="number" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Position</ion-label>
+            <ion-input formControlName="position" type="text">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked" >Nationality</ion-label>
+            <!-- <ion-input formControlName="nationality" type="text"> -->
+              <ion-select formControlName="nationality" interface="alert" placeholder="Select One" okText="Okay" cancelText="Dismiss">
+                <ion-select-option *ngFor="let country of countryData" [value]="country.code">{{country.name}}</ion-select-option>
+              </ion-select>
+            <!-- </ion-input> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-button expand="full" (click)="savePlayer()" [disabled]="!playerForm.valid">
+      {{ playerId ? 'Update' : 'Add'}}
+    </ion-button>
+  </ion-footer>
+
